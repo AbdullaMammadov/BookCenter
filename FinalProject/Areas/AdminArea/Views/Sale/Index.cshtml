@@ -1,0 +1,61 @@
+﻿@model List<Sale>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sale table</h4>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Products</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var sale in Model)
+                                {
+                                    <tr>
+
+
+                                        <td>@sale.Total</td>
+                                        <td>@sale.CreatedAt.ToString("dddd,dd MMMM yyyy")</td>
+                                        <td>@sale.AppUser.UserName</td>
+                                        <td>
+                                            <ul>
+                                                @foreach (var saleProduct in sale.SaleProducts)
+                                                {
+                                                    <li> Name: @saleProduct.Product.Name Price: @saleProduct.Price</li>
+
+                                                }
+                                                @foreach (var saleProduct in sale.SaleBooks)
+                                                {
+                                                    <li> Name: @saleProduct.Book.Name Price: @saleProduct.Book.Price</li>
+
+                                                }
+                                            </ul>
+                                        </td>
+
+
+
+
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

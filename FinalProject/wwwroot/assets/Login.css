@@ -1,0 +1,172 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    width: 450px;
+    border-radius: 10px;
+    margin: 20px 0px 20px 0px;
+    margin-bottom: 40px;
+  }
+  main div{
+    display: flow-root;
+    
+  }
+.input-div{
+  margin: 0px auto;
+}
+  .form button {
+    align-self: flex-end;
+  }
+  
+  .flex-column > label {
+    color: #151717;
+    font-weight: 600;
+  }
+  
+  .inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+  }
+  input.inputss[type="password"] {
+    background-color: white !important;
+}
+  .inputss {
+    
+    margin-left: 10px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    width: 79% !important;
+    background-color: white;
+    height: 100%;
+    
+  }
+  .form textarea {
+    width: 100% !important;
+  }
+  .password{
+    -webkit-text-security: disc !important;
+  }
+   .mmm .inputs{
+
+    height: 40px !important;
+    padding-bottom: 0xp !important;
+  }
+  .inputss:focus {
+    outline: none;
+  }
+  
+  .inputForm:focus-within {
+    border: 1.5px solid #b03b31;
+  }
+  .inputss:hover{
+    background-color: white;
+  }
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .flex-row > div > label {
+    font-size: 14px;
+    color: #b03b31;
+    font-weight: 400;
+  }
+  
+  .span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #b03b31;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .p {
+    text-align: center;
+    color: #b03b31;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  button{
+    border-radius: 5px !important;
+  }
+  .btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    border: 1px solid #2d79f3;
+  }
+  .container .form{
+    border-radius: 0px !important;
+  }
+  main{
+    background:url(https://cdn.aarp.net/content/dam/aarp/entertainment/books/2021/12/1140-flying-books-illustration.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .mmm form{
+    width: 100% !important;
+    margin: 0px auto !important;
+  }
+  .form{
+    margin: 0px auto !important;
+    
+  }
+
+  .mmm .form input{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height:40px ;
+    background-color: white;
+    border-radius: 0px !important;
+    outline: none;
+    border: none;
+  
+    z-index: 3;
+    display: inline;
+    color: black !important;
+    outline: #a18c8c;
+    opacity: 1;
+    width: 100%;
+  }
+  main{
+    padding: 20px ;
+    padding-bottom: 30px;
+  }

@@ -1,0 +1,83 @@
+﻿@model List<FinalProject.Models.Activity>
+
+@{
+    ViewData["Title"] = "Activities Measure";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Activities Table</h4>
+                    <a asp-action="Create"  class="btn btn-outline-success">Create Activity</a>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                  
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Description-2</th>
+                                    <th>Description-3</th>
+                                    <th>Added By</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var activity in Model)
+                                {
+                                    <tr>
+                                        <td> <img src="~/assets/img/@(activity.ImgUrl)" width="150" height="150" /></td>
+                                        <td>@activity.Title</td>
+                                        <td>
+                                            
+                                                <p>@activity.Description</p>
+                                            
+                                        </td>
+                                        <td>
+
+                                            @if (activity.Desc2==null)
+                                            {
+                                                <p>Empty</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@activity.Desc2</p>
+                                            }
+
+                                        </td>
+                                        <td>
+
+                                            @if (activity.Desc3 == null)
+                                            {
+                                                <p>Empty</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@activity.Desc3</p>
+                                            }
+
+                                        </td>
+                                        <td>@activity.AddedBy</td>
+                                      
+                                        <td>
+                                            <a asp-action="Update" asp-route-id="@activity.Id" class="btn btn-outline-warning">
+                                                <i>Update</i>
+                                            </a>
+                                            <a asp-action="Delete" asp-route-id="@activity.Id" class="btn btn-outline-danger">
+                                                <i class="mdi mdi-delete-sweep">Delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

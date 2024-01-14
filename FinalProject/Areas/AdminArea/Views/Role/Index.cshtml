@@ -1,0 +1,64 @@
+﻿﻿@using Microsoft.AspNetCore.Identity;
+@model List<IdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+
+    <form asp-action="index">
+
+        <input type="text" name="search" />
+        <button type="submit">search</button>
+    </form>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">role table</h4>
+                    <a asp-action="create" class="btn btn-outline-success">Create role</a>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                             
+                                    <th>Settings</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var role in Model)
+                                {
+                                    <tr>
+
+
+                                        <td>@role.Name</td>
+
+                                        <td>
+                                          
+                                                <a asp-action="delete" asp-route-id="@role.Id" class="btn btn-outline-danger">
+                                                    delete
+                                                </a>
+                                           
+
+
+                                         
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

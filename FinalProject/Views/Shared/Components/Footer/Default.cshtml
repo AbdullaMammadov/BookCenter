@@ -1,0 +1,49 @@
+﻿﻿@using FinalProject.Services;
+﻿@{
+    Layout = null;
+
+}
+
+@inject ILayoutService layoutService
+@model Dictionary<string,string>
+
+<footer>
+    <div class="foot">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 foot-col code">
+                    <img src="~/assets/img/@Html.Raw(Model["Logo2"])" alt="">
+                    <p>Bu sayt Bakı Kitab Mərkəzinin saytının alternatif halıdır. BackEnd-də C#, FrontEnd-də isə HTML, CSS, JS bununlada birliktə Bootstrapdan da istifadə olunmuşdur.</p>
+                </div>
+                <div class="col-lg-6 d-flex f-smm">
+                    <div class="col-lg-4 col-md-4 foot-col">
+                        <h2>Məhsullar</h2>
+                        @foreach (var category in layoutService.GetAllCategoryPros())
+                        {
+                            <a asp-controller="CategoryPro" asp-action="detail" asp-route-id="@category.Id">@category.Name</a>
+                        }
+                    </div>
+                    <div class="col-lg-4 col-md-4 foot-col  ft-sm">
+                        <h2>Bizi tanıyın</h2>
+                        <a asp-action="index" asp-controller="about">Haqqımızda</a>
+                        <a asp-action="tedbirs" asp-controller="activity">Tədbirlər</a>
+                        <a asp-action="lahiyes" asp-controller="activity">Lahiyələr</a>
+                        <a asp-controller="Contact" asp-action="index">Bizimlə əlaqə</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 foot-col">
+                        <h2>Ödəniş</h2>
+                        <a asp-controller="tvs" asp-action="index">Şərtlər və Qaydalar</a>
+                        <a asp-controller="tvs" asp-action="index">Sifariş, ödəniş və çatdırılma</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container d-flex justify-content-between">
+                <p>© Made By:Abdulla Mammadov</p>
+                <p>2023.04.27</p>
+            </div>
+        </div>
+    </div>
+
+</footer>

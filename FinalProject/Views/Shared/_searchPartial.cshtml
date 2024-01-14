@@ -1,0 +1,26 @@
+﻿@model List<Book>
+@foreach (var product in Model)
+{
+
+    <div class="search-product d-flex d-block">
+        <div class="search-product-img ">
+            <a asp-controller="book" asp-action="detail" asp-route-id="@product.Id">     <img class="h-120" src="~/assets/img/@product.ImgUrl" alt=""></a>
+        </div>
+        <div class="search-product-desc flex-column">
+            <h1 href="">@product.Name</h1>
+
+
+            <h1 style="line-height:0.9;" class="w-100"><span style="color:#b03b31;">Bölmə:</span> @product.Category.Name
+ </h1>
+            <h1 style="line-height:0.9;" class="w-100"><span style=" color:#b03b31;" >Müəlliflər:</span> @string.Join(", ", product.BookAuthors.Select(ba => ba.Author?.Name)) </h1>
+            <h1 style="line-height:0.9;" class="w-100"><span style="color:#b03b31;">Janrlar:</span> @string.Join(", ", product.BookGenres.Select(bg => bg.Genre?.Name)) </h1>
+            <h1 style="line-height:0.9;" class="w-100"><span style="color:#b03b31;">Qiymət</span> @product.Price </h1>
+           
+            
+        </div>
+    </div>
+
+
+
+
+}

@@ -1,0 +1,43 @@
+﻿@model IDictionary<string, string>
+
+@{
+    ViewData["Title"] = "Settings Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Settings Table</h4>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Key</th>
+                                    <th>Value</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var setting in Model)
+                                {
+                                    <tr>
+                                        <td>@setting.Key</td>
+                                        <td>@setting.Value</td>
+                                        <td>
+                                            <a asp-action="Update" asp-route-key="@setting.Key" class="btn btn-outline-warning">
+                                                <i>Update</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

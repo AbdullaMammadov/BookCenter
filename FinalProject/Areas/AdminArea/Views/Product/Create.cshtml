@@ -1,0 +1,66 @@
+﻿@using FinalProject.ViewModel.Admin.Product
+@model CreateProductVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <p class="card-description">
+                Book Create Form
+            </p>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for=Name class="form-control" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for=Price class="form-control" placeholder="Price">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="DiscountPrice"></label>
+                    <input asp-for=DiscountPrice class="form-control" placeholder="DiscountPrice">
+                    <span asp-validation-for="DiscountPrice" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for=Photo class="form-control" placeholder="Photo">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+
+                </div>
+
+
+            
+                <select asp-for="CategoryId" asp-items="@ViewBag.categories" class="form-select" aria-label="Default select example">
+                </select>
+
+                <div class="form-group">
+                    <label asp-for="AddedBy"></label>
+                    <input asp-for=AddedBy class="form-control" placeholder="AddedBy">
+                    <span asp-validation-for="AddedBy" class="text-danger"></span>
+
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-primary mr-2">Create</button>
+                <a asp-action="index" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+@section Script{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+}

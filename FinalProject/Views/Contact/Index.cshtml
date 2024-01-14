@@ -1,0 +1,71 @@
+﻿
+@model ContactVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main class="mmm">
+    <div class="category-product container mgx">
+
+        <div class="category">
+            <div class="container">
+                <div class="row">
+                    <div class="category-head align-items-center d-flex align-items-center">
+                        <a class="c-h-a " href="shop">Bizimlə Əlaqə</a>
+                    </div>
+
+                    <div class="us">
+                        <p>Telefon :</p>
+                        <p class="second">+ 994 12 505 99 99</p>
+                        <p> Elektron poçt</p>
+                        <p class="second">abdullaam@code.edu.az</p>
+                        <p>Ünvan :</p>
+                        <p class="second">Azərbaycan, Bakı, Üzeyir Hacıbəyli küç., 5; Qoqol küç., 2</p>
+                        <p>İş saatları</p>
+                        <p class="second">Bazar ertəsi - Şənbə: 10:00 - 22:00</p>
+                        <p class="second">Bazar günü: 11:00-22:00</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="position:relative;">
+        <form asp-action="SendMessage" asp-controller="Contact" class="form" method="post">
+
+
+
+            <div class="flex-column">
+                <label>Ad</label>
+            </div>
+            <div class="inputForm">
+                <input asp-for="Name" class="inputss" type="text">
+            </div>
+
+            <div class="flex-column">
+                <label>Email</label>
+            </div>
+            <div class="inputForm">
+                <input asp-for="Email" type="text" class="inputss">
+            </div>
+            <div class="flex-column">
+                <label>Mətin</label>
+            </div>
+            <div class="inputForm">
+                <input asp-for="Subject" type="text" id="" cols="30" rows="10" class="inputss"></input>
+            </div>
+            <button class="btn" style="position:absolute; top:0px; right:20px; width:100px; background-color:#b03b31; color:white;">SUBMIT</button>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.4966657271434!2d49.853021575446526!3d40.37568365813738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307ddc32301705%3A0x830c9e7c22994b3b!2sBaku%20Book%20Center!5e0!3m2!1saz!2saz!4v1701193323468!5m2!1saz!2saz" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+
+
+
+
+
+        </form>
+    </div>
+</main>
+<link rel="stylesheet" href="~/assets/Login.css">

@@ -1,0 +1,361 @@
+
+
+.mmm h1 {
+  text-align: center ;
+}
+
+.mmm .row {
+  display: -ms-flexbox ;
+  display: flex ;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+.fa-brands{
+  font-size:35px ;
+}
+.mmm .col-lg-3 {
+  -ms-flex: 25%; 
+  flex: 25%;
+}
+.sss{
+  margin-bottom: 20px;
+}
+.mmm .col-lg-6 {
+  -ms-flex: 50%; 
+  flex: 50%;
+}
+
+.mmm .col-75 {
+  -ms-flex: 75%; 
+  flex: 75%;
+}
+
+.mmm .col-lg-3,
+.col-lg-6,
+.col-lg-9 {
+  padding: 0 16px;
+}
+
+.mmm .container {
+  background-color: white;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.mmm input[type=text] {
+  outline: #b03b31;
+  outline: #b03b31 1px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: static;
+  height: 20px ;
+  padding: 20px;
+  
+}
+
+.mmm label {
+  margin-bottom: 10px;
+  display: block;
+  color: #b03b31;
+  font-weight: 500;
+}
+.mmm{
+  background-image: url(https://media.glamourmagazine.co.uk/photos/63bed3181baa0b52245d36da/16:9/w_1600%2Cc_limit/SELF%2520HELP%2520BOOKS%2520110123%2520default-land.jpg) ;
+}
+.mmm .icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+
+}
+
+.mmm .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.mmm .btn:hover {
+  background-color: #b03b31;
+}
+
+.mmm a {
+  color: #b03b31;
+  font-weight:500 ;
+}
+
+.mmm hr {
+  border: 1px solid lightgrey;
+}
+
+.mmm span.price {
+  float: right;
+  color: grey;
+  font-weight:500 ;
+}
+
+@media (max-width: 800px) {
+  .mmm .row {
+    flex-direction: column-reverse;
+  }
+  .mmm.col-lg-3 {
+    margin-bottom: 20px;
+  }
+}
+#in{
+  width: 50% ;
+}
+.card-input .container {
+  background-color: rgb(240, 238, 238);
+  display: flex;
+  width: 430px;
+  height: 120px;
+  position: relative;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+
+.card-input .container:hover {
+  transform: scale(1.03);
+  width: 220px;
+}
+
+.card-input .container:hover .left-side {
+  width: 100%;
+}
+
+.card-input .left-side {
+  background-color: #b03b31;
+  width: 130px;
+  height: 107px;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.card-input button{
+  border: none;
+}
+.card-input .right-side {
+  width: calc(100% - 130px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  justify-content: space-between;
+  white-space: nowrap;
+  transition: 0.3s;
+  background-attachment: rgb(235, 233, 233);
+}
+
+.card-input .right-side:hover {
+  background-color: white;
+}
+
+.card-input .arrow {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.card-input .new {
+  font-size: 23px;
+  font-family: "Lexend Deca", sans-serif;
+  margin-left: 20px;
+}
+
+.card-input .card {
+  width: 70px;
+  height: 46px;
+  background-color: #da9a94;
+  border-radius: 6px;
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  -webkit-box-shadow: 9px 9px 9px -2px #b03b31;
+  -moz-box-shadow: 9px 9px 9px -2px #b03b31;
+  -webkit-box-shadow: 9px 9px 9px -2px #b03b31;
+}
+
+.card-input .card-line {
+  width: 65px;
+  height: 13px;
+  background-color: #a8524a;
+  border-radius: 2px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width: 480px) {
+  .card-input .container {
+    transform: scale(0.7);
+  }
+
+  .card-input .container:hover {
+    transform: scale(0.74);
+  }
+
+  .new {
+    font-size: 18px;
+  }
+}
+
+.card-input .buttons {
+  width: 8px;
+  height: 8px;
+  background-color: #6e2720;
+  box-shadow: 0 -10px 0 0 #6e2720, 0 10px 0 0 #491915;
+  border-radius: 50%;
+  margin-top: 5px;
+  transform: rotate(90deg);
+  margin: 10px 0 0 -30px;
+}
+
+.card-input .container:hover .card {
+  animation: slide-top 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+.card-input .container:hover .post {
+  animation: slide-post 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  50% {
+    -webkit-transform: translateY(-70px) rotate(90deg);
+    transform: translateY(-70px) rotate(90deg);
+  }
+
+  60% {
+    -webkit-transform: translateY(-70px) rotate(90deg);
+    transform: translateY(-70px) rotate(90deg);
+  }
+
+  100% {
+    -webkit-transform: translateY(-8px) rotate(90deg);
+    transform: translateY(-8px) rotate(90deg);
+  }
+}
+
+.post {
+  width: 63px;
+  height: 75px;
+  background-color: #dddde0;
+  position: absolute;
+  z-index: 11;
+  bottom: 10px;
+  top: 120px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.post-line {
+  width: 47px;
+  height: 9px;
+  background-color: #545354;
+  position: absolute;
+  border-radius: 0px 0px 3px 3px;
+  right: 8px;
+  top: 8px;
+}
+
+.post-line:before {
+  content: "";
+  position: absolute;
+  width: 47px;
+  height: 9px;
+  background-color: #757375;
+  top: -8px;
+}
+
+.screen {
+  width: 47px;
+  height: 23px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 22px;
+  right: 8px;
+  border-radius: 3px;
+}
+
+.numbers {
+  width: 12px;
+  height: 12px;
+  background-color: #838183;
+  box-shadow: 0 -18px 0 0 #838183, 0 18px 0 0 #838183;
+  border-radius: 2px;
+  position: absolute;
+  transform: rotate(90deg);
+  left: 25px;
+  top: 52px;
+}
+
+.numbers-line2 {
+  width: 12px;
+  height: 12px;
+  background-color: #aaa9ab;
+  box-shadow: 0 -18px 0 0 #aaa9ab, 0 18px 0 0 #aaa9ab;
+  border-radius: 2px;
+  position: absolute;
+  transform: rotate(90deg);
+  left: 25px;
+  top: 68px;
+}
+
+@keyframes slide-post {
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-70px);
+    transform: translateY(-70px);
+  }
+}
+
+.dollar {
+  position: absolute;
+  font-size: 17px;
+ font-weight: 500;
+  width: 100%;
+  left: 0;
+  top: 0;
+  color: #6e2720;
+  text-align: center;
+}
+
+.container:hover .dollar {
+  animation: fade-in-fwd 0.3s 1s backwards;
+}
+
+@keyframes fade-in-fwd {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

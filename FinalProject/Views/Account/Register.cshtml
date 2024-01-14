@@ -1,0 +1,77 @@
+﻿﻿@using FinalProject.ViewModel.Account;
+@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+<main style="    z-index: 222 !important;
+    position: relative;
+    top: -27px;
+    margin-bottom: -60px;
+    min-height: 350px;">
+
+    <form class="form" method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="flex-column">
+            <label>First Name </label>
+        </div>
+        <div class="inputForm">
+            <input asp-for="FirstName" placeholder="Enter your First Name" class="inputss" type="text">
+           
+        </div>
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+
+        <div class="flex-column">
+            <label>Last Name</label>
+        </div>
+        <div class="inputForm">
+            <input asp-for="LastName" placeholder="Enter your Last Name" class="inputss" type="text">
+        
+        </div>
+        <span class="text-danger" asp-validation-for="LastName"></span>
+
+        <div class="flex-column">
+            <label>Email</label>
+        </div>
+        <div class="inputForm">
+            <input asp-for="Email" placeholder="Enter your Last Name" class="inputss" type="text">
+         
+        </div>
+        <span class="text-danger" asp-validation-for="Email"></span>
+
+        <div class="flex-column">
+            <label>User Name</label>
+        </div>
+        <div class="inputForm">
+            <input asp-for="Username" placeholder="Enter your Last Name" class="inputss" type="text">
+            
+        </div>
+        <span class="text-danger" asp-validation-for="Username"></span>
+
+
+        <div class="flex-column">
+            <label>Password </label>
+        </div>
+        <div class="inputForm">
+
+            <input asp-for="Password" placeholder="Enter password" class="inputss password" type="text">
+          
+        </div>
+        <span class="text-danger" asp-validation-for="Password"></span>
+        
+        <div class="flex-column">
+            <label>Confirm Password</label>
+        </div>
+        <div class="inputForm">
+
+            <input asp-for="RepeatPassword" placeholder="Confirm Your Password" class="inputss password" type="text">
+         
+        </div>
+
+        <span class="text-danger" asp-validation-for="RepeatPassword"></span>
+        <button class="main-btn main-btn-2 button-submit">Register</button>
+        <p class="p">If you have any account <a asp-action="login" class="span deceration-none">Sign In</a>
+
+    </form>
+
+</main>
+<link rel="stylesheet" href="~/assets/Login.css">

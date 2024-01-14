@@ -1,0 +1,78 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Product table</h4>
+                    <a asp-action="create" class="btn btn-outline-success">Create Product</a>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                   
+                                    <th>Category</th>
+                                    <th>Added By</th>
+                                    <th>Price</th>
+                                    <th>Discount Price</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Settings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var book in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/assets/img/@(book.ImgUrl)" width="150" height="150" />
+                                        </td>
+                                        <td>@book.Name</td>
+                                      
+                                        <td>@book.CategoryPro.Name</td>
+                                        <td>@book.AddedBy</td>
+                                        <td>@book.Price$</td>
+                                        <td>
+                                            @{
+                                                if (book.DiscountPrice != null && book.Price != null && book.Price > 0)
+                                                {
+                                                    var discountAmount = (decimal)book.Price - (decimal)book.DiscountPrice;
+                                                    var discountPercentage = (discountAmount / (decimal)book.Price) * 100;
+                                                    <ul>
+                                                        <li>Sale: @discountPercentage%</li>
+                                                    </ul>
+                                                }
+                                                else
+                                                {
+                                                    <ul>
+                                                        <li>No Sale</li>
+                                                    </ul>
+                                                }
+                                            }
+                                        </td>
+                                        <td>@book.CreatedAt</td>
+                                        <td>@book.UpdatedAt</td>
+                                        <td>
+                                            <a asp-action="delete" asp-route-id="@book.Id" class="btn btn-outline-danger">
+                                                <i class="mdi mdi-delete-sweep"></i>Delete
+                                            </a>
+                                            <a asp-action="update" asp-route-id="@book.Id" class="btn btn-outline-warning">
+                                                <i>Update</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

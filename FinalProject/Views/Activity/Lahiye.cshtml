@@ -1,0 +1,81 @@
+﻿
+
+@model ActivityVM
+@{
+    ViewData["Title"] = "Lahiye";
+}
+
+
+<main class="home">
+      <div class="hd-mg">
+      <!-- book start -->
+      <div class="category-product container">
+        <div class="category">
+         <div class="container">
+             <div class="row">
+                 <div class="category-head align-items-center d-flex align-items-center">
+                            <a class="c-h-a " asp-controller="Activity" asp-action="lahiyes">Lahiyələr</a>
+               </div>
+               <div class="content">
+                <h2>@Model.Lahiye.Title</h2>
+                <p>@Model.Lahiye.Date.Value.ToString("dd.yyyy.MM")</</p>
+               <div class="d-flex justify-content-center w-100">
+                <img class="w-50" src="~/assets/img/@Model.Lahiye.ImgUrl" alt="">
+               </div>
+               </div>
+               <div class="desc-tedbir">
+                <p>@Model.Lahiye.Description</p>
+                <p>@Model.Lahiye.Desc2</p>
+                <p>@Model.Lahiye.Desc3</p>
+               </div>
+          
+               </div>
+      
+         </div>
+        </div>
+     </div>
+     <div class="category-product container">
+        <div class="category">
+         <div class="container">
+             <div class="row">
+                 <div class="category-head align-items-center d-flex align-items-center">
+                            <a class="c-h-a " asp-controller="Activity" asp-action="lahiyes"> Lahiyələr</a>
+               </div>
+                        <div class="ted">
+                            @foreach (var item in Model.Lahiyes)
+                            {
+                                <div class="tedbir product-item-parent col-lg-4 col-sm-12 col-md-12 ">
+
+                                    <div class="tedbir-img">
+                                        <div class="product-img d-flex justify-content-center">
+                                            <a asp-action="Lahiye" asp-controller="Activity" asp-route-id="@item.Id">
+                                                <img src="~/assets/img/@item.ImgUrl" alt="">
+                                            </a>
+                                        </div>
+                                        <p class="ted-h">@((item.Title.Length > 60) ? item.Title.Substring(0, 50) : item.Title)...</p>
+                                        @if (item.Date.HasValue)
+                                        {
+                                            <p class="tedbir-date">@item.Date.Value.ToString("dd.yyyy.MM")</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="tedbir-date">Tarih Bilgisi Yok</p>
+                                        }
+                                        <p>@(item.Description.Length > 200 ? item.Description.Substring(0, 200) : item.Description)....</p>
+
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+
+         
+            </div>
+      
+         </div>
+        </div>
+     </div>
+      <!-- book end -->
+      </div>
+    </main>

@@ -1,0 +1,23 @@
+﻿﻿@using FinalProject.ViewModels.Admin.RoleVM;
+@model UpdateRoleVM
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>@Model.User.UserName</h1>
+
+<form method="post">
+    @foreach (var role in Model.Roles)
+    {
+
+        <input value="@role.Name" name="roles" type="checkbox" @(Model.UserRoles.Contains(role.Name) ? "checked" : "") />
+
+        @role.Name
+
+        <br />
+
+
+    }
+    <button type="submit">update</button>
+
+</form>

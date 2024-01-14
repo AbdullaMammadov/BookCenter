@@ -1,0 +1,157 @@
+﻿@model BookVM
+@{
+    ViewData["Title"] = "Məhsul";
+}
+<main class="home" style="margin-bottom: -25px">
+    <div class="hd-mg">
+        <!-- book start -->
+        <div class="category-product container">
+            <div class="category">
+                <div class="container">
+                    <div class="row">
+                        <div class="category-head align-items-center d-flex align-items-center">
+                            <a class="c-h-a " asp-action="detail" asp-controller="categorypro" asp-route-id="@Model.Prodcuct.CategoryProId">@Model.CategoryName </a>
+                        </div>
+                        <div class="book">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-lg-6 col-sm-12 col-md-12 det-desc">
+                                        <img class="detail-img" src="~/assets/img/@Model.Prodcuct.ImgUrl" alt="">
+                                    </div>
+                                    <div class="col-lg-6  col-sm-12 col-md-12 align-items-center">
+                                        <div class="w-100 px-5">
+                                            <h1>@Model.Prodcuct.Name</h1>
+                                            <div class=" detail-book d-flex w-50 align-items-center">
+                                                <h6>Qiymət :</h6>
+                                                @if (Model.Prodcuct.DiscountPrice != null)
+                                                {
+                                                    <p class="sale mx-2" style="color:black; margin-top:8px;">@Model.Prodcuct.Price$</p>
+                                                    <p style=" margin-top:8px; ">@Model.Prodcuct.DiscountPrice$</p>
+                                                }
+                                                else
+                                                {
+                                                    <p style=" margin-top:8px;">@Model.Prodcuct.Price$</p>
+                                                }
+                                            </div>
+                                            <div class="detail-book d-flex w-50 align-items-center">
+                                                <h6>Bölmə:</h6>
+                                                <h6 class="h6-cat mx-2">@Model.CategoryName</h6>
+                                            </div>
+                                           
+                                            <a asp-controller="Basket" asp-action="addProduct" asp-route-id="@Model.Prodcuct.Id" class="btn btn-detail" style="margin-top: 19px;">
+                                                SƏBƏT
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="category-product container">
+            <div class="category">
+                <div class="container">
+                    <div class="row">
+                        <div class="category-head align-items-center d-flex align-items-center">
+                            <a class="c-h-a " asp-action="detail" asp-controller="categorypro" asp-route-id="@Model.Prodcuct.CategoryProId"> @Model.CategoryName</a>
+                        </div>
+                        <div class="product">
+                            <div class="row">
+                                @foreach (var item in Model.Products)
+                                {
+                                    <!-- 1 -->
+                                    <div class=" product-item-parent col-6 col-sm-6 col-md-4 col-lg-2">
+                                        <div class="product-item">
+                                            <div class="product-img d-flex justify-content-center " onclick="showDetails('book-@item.Id')">
+
+                                                <img class="book-1" src="~/assets/img/@item.ImgUrl" alt="">
+
+                                            </div>
+                                            <div class="product-card align-items-center position-relative">
+                                                <a asp-action="Detail" asp-route-id="@item.Id">
+                                                    <h5>
+                                                        @item.Name
+                                                    </h5>
+                                                </a>
+                                                <div class="basket d-flex justify-content-evenly position-absolute">
+                                                    <div class="price d-flex justify-content-start ">
+
+                                                        @if (item.DiscountPrice != null)
+                                                        {
+                                                            <p class="sale mx-2">@item.Price$</p>
+                                                            <p>@item.DiscountPrice$</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>@item.Price$</p>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <a asp-action="addproduct" asp-controller="basket" asp-route-id="@item.Id">
+                                                            <i class="fa-solid fa-basket-shopping atvet"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-detail position-fixed" id="detail-book-@item.Id">
+                                        <div class="d-flex justify-content-center detail-img " onclick="showDetails('book-@(item.Id)')">
+                                            <img style="max-width:100%;" src="~/assets/img/@item.ImgUrl" alt="">
+                                        </div>
+                                        <div class="product-card align-items-center position-relative">
+                                            <a asp-action="detail" asp-route-id="@item.Id">
+                                                <h5>
+                                                    @item.Name
+                                                </h5>
+                                            </a>
+                                            <div class="price d-flex justify-content-start ">
+                                                @if (item.DiscountPrice != null)
+                                                {
+                                                    <p class="sale mx-2">@item.Price$</p>
+                                                    <p>@item.DiscountPrice$</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@item.Price$</p>
+                                                }
+                                            </div>
+
+
+                                        </div>
+                                        <a   asp-controller="Basket" asp-action="addproduct" asp-route-id="@item.Id" class=" btn btbt">Səbətə At</a>
+                                    </div>
+                                    <div class="detail-black " id="black-book-@item.Id">
+                                    </div>
+                                    <!-- 1 -->
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- book end -->
+    </div>
+</main>
+<style>
+    .btbt {
+        color: white;
+        background-color: rgb(178,64,54);
+        transition: 0.2s;
+        border: 2px solid rgb(178,64,54);
+        
+    }
+
+        .btbt:hover {
+            color: rgb(178,64,54);
+            background-color: white;
+            border: 2px solid rgb(178,64,54);
+        }
+</style>

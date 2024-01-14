@@ -1,0 +1,439 @@
+﻿
+@model HomeVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+<main class="home">
+    <div class="hd-mg"></div>
+    <!--====== Slider Part Start ======-->
+    <div class="slider overflow-hidden">
+        <div class="container">
+            <div class="row">
+
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner">
+                       
+                        @foreach (var item in Model.Sliders)
+                        {
+                            <div class="carousel-item@(item == Model.Sliders.First() ? " active" : "")">
+                                <img src="~/assets/img/@item.ImgUrl" class="d-block w-100" alt="">
+                            </div>
+                        }
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden slider-button">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden slider-button">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== Slider Part End ======-->
+    <!--====== Categories-Products Part Start ======-->
+    <div>
+        <div class="category-product container">
+            <div class="category">
+                <div class="container">
+                    <div class="row">
+                        <div class="category-head align-items-center d-flex align-items-center">
+                            <a class="c-h-a " asp-controller="Shop" asp-action="Books"> Endirimlər</a>
+                        </div>
+                        <div class="product">
+                            <div class="row">
+                                @foreach (var item in Model.Books)
+                                {
+                                    <!-- 1 -->
+                                    <div class=" product-item-parent col-6 col-sm-6 col-md-4 col-lg-2">
+                                        <div class="product-item">
+                                            <div class="product-img d-flex justify-content-center " onclick="showDetails('book-@item.Id')">
+
+                                                <img class="book-1" src="~/assets/img/@item.ImgUrl" alt="">
+
+                                            </div>
+                                            <div class="product-card align-items-center position-relative">
+                                                <a asp-controller="book" asp-action="Detail" asp-route-id="@item.Id">
+                                                    <h5>
+                                                        @item.Name
+                                                    </h5>
+                                                </a>
+                                                <div class="basket d-flex justify-content-evenly position-absolute">
+                                                    <div class="price d-flex justify-content-start ">
+
+                                                        @if (item.DiscountPrice != null)
+                                                        {
+                                                            <p class="sale mx-2">@item.Price$</p>
+                                                            <p>@item.DiscountPrice$</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>@item.Price$</p>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <a asp-controller="basket" asp-action="addBook" asp-route-id="@item.Id">
+                                                            <i class="fa-solid fa-basket-shopping atvet"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-detail position-fixed" id="detail-book-@item.Id">
+                                        <div class="d-flex justify-content-center detail-img " onclick="showDetails('book-@(item.Id)')">
+                                            <img style="max-width:100%;" src="~/assets/img/@item.ImgUrl" alt="">
+                                        </div>
+                                        <div class="product-card align-items-center position-relative">
+                                            <a asp-controller="book" asp-action="detail" asp-route-id="@item.Id">
+                                                <h5>
+                                                    @item.Name
+                                                </h5>
+                                            </a>
+                                            <div class="price d-flex justify-content-start ">
+                                                @if (item.DiscountPrice != null)
+                                                {
+                                                    <p class="sale mx-2">@item.Price$</p>
+                                                    <p>@item.DiscountPrice</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@item.Price$</p>
+                                                }
+                                            </div>
+
+
+                                        </div>
+                                        <a asp-controller="Basket" asp-action="addbook" asp-route-id="@item.Id" class="btn btn-detail" style="margin-top: 0px;">
+                                            SƏBƏT
+                                        </a>
+                                    </div>
+                                    <div class="detail-black " id="black-book-@item.Id">
+                                    </div>
+                                    <!-- 1 -->
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="category-product container">
+            <div class="category">
+                <div class="container">
+                    <div class="row">
+                        <div class="category-head align-items-center d-flex align-items-center">
+                            <a class="c-h-a " asp-action="Books" asp-controller="Shop" > Son əlavə olunanlar</a>
+                        </div>
+                        <div class="product">
+                            <div class="row">
+                                @foreach (var item in Model.LastBooks)
+                                {
+                                    <!-- 1 -->
+                                    <div class=" product-item-parent col-6 col-sm-6 col-md-4 col-lg-2">
+                                        <div class="product-item">
+                                            <div class="product-img d-flex justify-content-center " onclick="showDetails('book-@item.Id')">
+
+                                                <img class="book-1" src="~/assets/img/@item.ImgUrl" alt="">
+
+                                            </div>
+                                            <div class="product-card align-items-center position-relative">
+                                                <a asp-controller="book" asp-action="Detail" asp-route-id="@item.Id">
+                                                    <h5>
+                                                        @item.Name
+                                                    </h5>
+                                                </a>
+                                                <div class="basket d-flex justify-content-evenly position-absolute">
+                                                    <div class="price d-flex justify-content-start ">
+
+                                                        @if (item.DiscountPrice != null)
+                                                        {
+                                                            <p class="sale mx-2">@item.Price$</p>
+                                                            <p>@item.DiscountPrice$</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>@item.Price$</p>
+                                                        }
+                                                    </div>
+                                                    <div>
+                                                        <a asp-controller="basket" asp-action="addBook" asp-route-id="@item.Id">
+                                                            <i class="fa-solid fa-basket-shopping atvet"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-detail position-fixed" id="detail-book-@item.Id">
+                                        <div class="d-flex justify-content-center detail-img " onclick="showDetails('book-@(item.Id)')">
+                                            <img style="max-width:100%;" src="~/assets/img/@item.ImgUrl" alt="">
+                                        </div>
+                                        <div class="product-card align-items-center position-relative">
+                                            <a asp-controller="book" asp-action="detail" asp-route-id="@item.Id">
+                                                <h5>
+                                                    @item.Name
+                                                </h5>
+                                            </a>
+                                            <div class="price d-flex justify-content-start ">
+                                                @if (item.DiscountPrice != null)
+                                                {
+                                                    <p class="sale mx-2">@item.Price$</p>
+                                                    <p>@item.DiscountPrice</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@item.Price$</p>
+                                                }
+                                            </div>
+
+
+                                        </div>
+                                        <a asp-controller="Basket" asp-action="addbook" asp-route-id="@item.Id" class="btn btn-detail" style="margin-top: 0px;">
+                                            SƏBƏT
+                                        </a>
+                                    </div>
+                                    <div class="detail-black " id="black-book-@item.Id">
+                                    </div>
+                                    <!-- 1 -->
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @foreach (var item in Model.Categories)
+        {
+            @if (item.Books != null)
+            {
+                <div class="category-product container">
+                    <div class="category">
+                        <div class="container">
+                            <div class="row">
+                                <div class="category-head align-items-center d-flex align-items-center">
+                                    <a class="c-h-a " asp-action="detail" asp-controller="category" asp-route-id="@item.Id"> @item.Name</a>
+                                </div>
+                                <div class="product">
+                                    <div class="row">
+                                        @foreach (var items in item.Books)
+                                        {
+                                            <!-- 1 -->
+                                            <div class=" product-item-parent col-6 col-sm-6 col-md-4 col-lg-2">
+                                                <div class="product-item">
+                                                    <div class="product-img d-flex justify-content-center " onclick="showDetails('book-@(items.Id)0000')">
+
+                                                        <img class="book-1" src="~/assets/img/@items.ImgUrl" alt="">
+
+                                                    </div>
+                                                    <div class="product-card align-items-center position-relative">
+                                                        <a asp-controller="book" asp-action="Detail" asp-route-id="@items.Id">
+                                                            <h5>
+                                                                @items.Name
+                                                            </h5>
+                                                        </a>
+                                                        <div class="basket d-flex justify-content-evenly position-absolute">
+                                                            <div class="price d-flex justify-content-start ">
+
+                                                                @if (items.DiscountPrice != null)
+                                                                {
+                                                                    <p class="sale mx-2">@items.Price$</p>
+                                                                    <p>@items.DiscountPrice$</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <p>@items.Price$</p>
+                                                                }
+                                                            </div>
+                                                            <div>
+                                                                <a asp-controller="basket" asp-action="addBook" asp-route-id="@items.Id">
+                                                                    <i class="fa-solid fa-basket-shopping atvet"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-detail position-fixed" id="detail-book-@(items.Id)0000">
+                                                <div class="d-flex justify-content-center detail-img " onclick="showDetails('book-@(items.Id)0000')">
+                                                    <img style="max-width:100%;" src="~/assets/img/@items.ImgUrl" alt="">
+                                                </div>
+                                                <div class="product-card align-items-center position-relative">
+                                                    <a asp-controller="book" asp-action="detail" asp-route-id="@items.Id">
+                                                        <h5>
+                                                            @items.Name
+                                                        </h5>
+                                                    </a>
+                                                    <div class="price d-flex justify-content-start ">
+                                                        @if (items.DiscountPrice != null)
+                                                        {
+                                                            <p class="sale mx-2">@items.Price$</p>
+                                                            <p>@items.DiscountPrice</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>@items.Price$</p>
+                                                        }
+                                                    </div>
+
+
+                                                </div>
+                                                <a asp-controller="Basket" asp-action="addbook" asp-route-id="@items.Id" class="btn btn-detail" style="margin-top: 0px;">
+                                                    SƏBƏT
+                                                </a>
+                                            </div>
+                                            <div class="detail-black " id="black-book-@(items.Id)0000">
+                                            </div>
+                                            <!-- 1 -->
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <!--====== Categories-Products Part End ======-->
+    <!---==== Tedbirler Part Start====-->
+    <div class="category-product container">
+        <div class="category">
+            <div class="container">
+                <div class="row">
+                    <div class="category-head align-items-center d-flex align-items-center">
+                        <a class="c-h-a " href="..."> Tədbdirlər</a>
+                    </div>
+                    <div class="ted">
+                        @foreach (var item in Model.Tedbirs)
+                        {
+                            <div class="tedbir product-item-parent col-lg-4 col-sm-12 col-md-12 ">
+
+                                <div class="tedbir-img">
+                                    <div class="product-img d-flex justify-content-center">
+                                        <a asp-action="Tedbir" asp-controller="Activity" asp-route-id="@item.Id">
+                                            <img src="~/assets/img/@item.ImgUrl" alt="">
+                                        </a>
+                                    </div>
+                                    <p class="ted-h">@((item.Title.Length > 60) ? item.Title.Substring(0, 50) : item.Title)...</p>
+                                    @if (item.Date.HasValue)
+                                    {
+                                        <p class="tedbir-date">@item.Date.Value.ToString("dd.yyyy.MM")</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="tedbir-date">Tarih Bilgisi Yok</p>
+                                    }
+                                    <p>@(item.Description.Length > 200 ? item.Description.Substring(0, 200) : item.Description)....</p>
+
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!---=== Tedbirler Part  End-->
+    <!-- YOUTUBE -->
+    <div class="category-product container yt">
+        <div class="category ">
+            <div class="container">
+                <div class="row">
+                    <div class="category-head align-items-center d-flex align-items-center">
+                        <a class="c-h-a " asp-controller="tvs" asp-action="index">FAQ</a>
+                    </div>
+                    <div class="product">
+                        <div class="row">
+                            <div class="container youtube">
+                                <iframe width="100%" height="500px " src="https://www.youtube.com/embed/sCavPnCtuBM?si=vkoIyQ0RYKRdO6Qx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- YOUTUBE -->
+    <!---==== Lahiyeler Part Start====-->
+    <div class="category-product container">
+        <div class="category">
+            <div class="container">
+                <div class="row">
+                    <div class="category-head align-items-center d-flex align-items-center">
+                        <a class="c-h-a " href="..."> Lahiyələr</a>
+                    </div>
+                    <div class="ted">
+                        @foreach (var item in Model.Lahiyes)
+                        {
+                            <div class="tedbir product-item-parent col-lg-4 col-sm-12 col-md-12 ">
+
+                                <div class="tedbir-img">
+                                    <div class="product-img d-flex justify-content-center">
+                                        <a asp-controller="Activity" asp-action="lahiye" asp-route-id="@item.Id">
+                                            <img src="~/assets/img/@item.ImgUrl" alt="">
+                                        </a>
+                                    </div>
+                                    <p class="ted-h">@((item.Title.Length > 60) ? item.Title.Substring(0, 50) : item.Title)...</p>
+                                    @if (item.Date.HasValue)
+                                    {
+                                        <p class="tedbir-date">@item.Date.Value.ToString("dd.yyyy.MM")</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="tedbir-date">Tarih Bilgisi Yok</p>
+                                    }
+                                    <p>@(item.Description.Length > 200 ? item.Description.Substring(0, 200) : item.Description)....</p>
+
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!---=== Lahiyeler Part  End-->
+
+</main>
+<style>
+    .foot{
+        margin-top: -23px;
+    }
+
+  
+     
+</style>

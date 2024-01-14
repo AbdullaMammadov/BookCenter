@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "TVS";
+}
+@model Dictionary<string,string>
+
+<main class="mmm">
+    <div class="category-product container mgx">
+        <div class="category">
+            <div class="container">
+                <div class="row">
+                    <div class="category-head align-items-center d-flex align-items-center">
+                        <a class="c-h-a " href="shop">TVS</a>
+                    </div>
+
+                    <div class="us">
+                        <p>1. Bakı Kitab Mərkəzi harada yerləşir?</p>
+                        <p class="second">@Html.Raw(Model["tvs1"])</p>
+                        <p>  2. Bakı Kitab Mərkəzinə giriş pulsuzdur?</p>
+
+                        <p class="second">@Html.Raw(Model["tvs2"])</p>
+                        <p>
+                            3. Kitab əvəzinə şəxsiyyət vəsiqəsini qoyaraq kitabı evə aparmaq mümkündürmü?
+
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs3"])</p>
+
+                        <p>
+                            4. Bakı Kitab Mərkəzinə öz kitabınla gəlmək olarmı?
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs4"])</p>
+
+                        <p>
+                            5. Bakı Kitab Mərkəzində hansı kitabları oxumaq olar?
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs5"])</p>
+                        <p>
+                            6. Bakı Kitab Mərkəzinin iş saatları:
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs6"])</p>
+                        <p>
+                            7. Bakı Kitab Mərkəzinə içki və yeməklə niyə gəlmək olmaz?
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs7"])</p>
+                        <p>
+                            8. Bakı Kitab Mərkəzinə ev heyvanları ilə gəlmək olarmı?
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs8"])</p>
+
+                        <p>
+                            9. Kitab necə qaytarılır?
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs9"])</p>
+                        <p>
+                            10. BKM-də hansı endirimlər var? Müəllimlər və ya tələbələr üçün endirim varmı?
+                        </p>
+                        <p class="second">@Html.Raw(Model["tvs10"])</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<style>
+    .foot {
+        margin-top: -24px;
+    }
+</style>
